@@ -44,6 +44,6 @@ export class ProductosPage implements ViewWillEnter, ViewDidLeave {
           event.target.disabled = true; // Desactiva el Infinite Scroll si no hay más productos
         }
       });
-    }, 1300);
+    }, 1600);
   }
 }
