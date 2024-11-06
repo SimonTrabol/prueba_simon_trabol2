@@ -12,6 +12,7 @@ export class ProductoService {
   private readonly URL_PRODUCTOS = 'https://dummyjson.com/products'
   private saltar = 0;
   private cantidad = 30;
+  private total = 0;
   private $productos = new BehaviorSubject<Producto[]>([]);
   public producto = this.$productos.asObservable();
 
@@ -34,11 +35,11 @@ export class ProductoService {
     })
   }
     public resetPagination() {
-      this.saltar = 0; // Reinicia el offset
+      this.saltar = 0; // Reinicia el la posicion de partida
       this.$productos.next([]); // Limpia la lista de productos
     }
     public siguientesProductos() {
-      this.saltar += this.cantidad; // Incrementa el offset
+      this.saltar += this.cantidad; // Incrementa el reincia posicion de partida
       const url_nueva = `${this.URL_PRODUCTOS}?limit=${this.cantidad}&skip=${this.saltar}`;
       this.http.get<ProductoRespuesta>(url_nueva, {
         headers: {
